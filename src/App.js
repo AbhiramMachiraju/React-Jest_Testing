@@ -1,5 +1,6 @@
 import Application from './component/application/application';
 import { Users } from './component/httpmockapplication/Users';
+import { Signin } from './component/loginpage/Signin';
 import { MockPage } from './component/mockapplication/MockPage';
 import { Skills } from './component/skills/Skills';
 
@@ -9,7 +10,8 @@ function App() {
      {/*  <Application/>  
       <Skills skills={['HTML', 'CSS']} />
       <MockPage count={1} /> */}
-       <Users />
+       {/* <Users /> */}
+       <Signin data-testid="child"/>
     </div>
   );
 }
