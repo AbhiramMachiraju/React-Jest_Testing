@@ -8,6 +8,7 @@ import { Skills } from './component/skills/Skills';
 import {HashRouter, Route, Switch} from 'react-router-dom'
 import ListAllData from './component/FormPages/ListAllData';
 import CreateData from './component/FormPages/CreateData';
+import Shop from './component/ReduxExample/Shop';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
        <div className="container">
        <HashRouter hashType="slash">
                     <Switch> 
-                          <Route path = "/" exact component = {ListAllData}></Route>
+                          <Route path = "/" exact component = {Shop}></Route>
+                         {/*  <Route path = "/" exact component = {ListAllData}></Route> */}
                           <Route path = "/employees" component = {ListAllData}></Route>
                           <Route path = "/add-employee/:id" component = {CreateData}></Route>
                          {/*  <Route path = "/view-employee/:id" component = {ViewEmployeeComponent}></Route> */}

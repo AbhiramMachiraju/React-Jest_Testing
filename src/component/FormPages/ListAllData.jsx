@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { axiosRequestCall, validate } from './BiodataServices';
 import './formStyle.css';
 
 export const BASE_URL = "http://localhost:8082/restApp/BioDataServices";
 export const URLs = { FETCHALL: "/getAllBio", CREATE: "/saveBioData", UPDATE: "/updateBioData", DELETE: "/deleteBioData", VIEW: "/getbyId" }
+
+
+
+const mapStateToProps = (state) => {
+    return {
+        cacheUser: state.cacheUserStore
+    }
+}
+
+
 class ListAllData extends Component {
 
     constructor(props) {
@@ -18,6 +29,10 @@ class ListAllData extends Component {
 
 
     componentDidMount() {
+
+
+        alert("Cache User from redux store:"+JSON.stringify(this.props.cacheUser));
+
         var self = this;
         axiosRequestCall(null, BASE_URL + URLs.FETCHALL, "GET", function (result) {
             if (result.data.data !== null && result.data.data.length !== 0) {
@@ -28,6 +43,12 @@ class ListAllData extends Component {
             function (error) {
                 console.log("--failed axios " + BASE_URL + URLs.FETCHALL + " :: " + error);
             });
+
+
+
+
+
+
     }
 
 
@@ -67,9 +88,9 @@ class ListAllData extends Component {
             <div>
                 <h2 className="text-center">All DATA</h2>
                 <div className="row">
-                <div  className="col-md-6"></div>
-                <div className="col-md-6">
-                    <button style={{float:'right'}} className="btn btn-primary" onClick={this.addEmployee} > CREATE </button></div>
+                    <div className="col-md-6"></div>
+                    <div className="col-md-6">
+                        <button style={{ float: 'right' }} className="btn btn-primary" onClick={this.addEmployee} > CREATE </button></div>
                 </div>
                 <br></br>
                 <div className="row" style={{ overflowX: 'auto' }}>
@@ -114,4 +135,4 @@ class ListAllData extends Component {
     }
 }
 
-export default ListAllData
+export default connect(mapStateToProps, null)(ListAllData)
