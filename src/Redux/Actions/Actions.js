@@ -16,3 +16,5 @@ export const fetchAllData_Users = () => {
     }
 };
 
+//For saga Test
+export const addUser = (data) => { return { type: actionType.ADD_USER,payload:data} }

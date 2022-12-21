@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { buyLaptop, buyMobile,cacheUser,fetchAllData_Users} from '../../Redux/Actions/Actions'
+import { buyLaptop, buyMobile,cacheUser,fetchAllData_Users, fetchUserResponse} from '../../Redux/Actions/Actions'
 import { actionType } from '../../Redux/Actions/ActionType'
 import { axiosRequestCall, validate } from '../FormPages/BiodataServices'
 import { BASE_URL } from '../FormPages/ListAllData'
@@ -74,7 +74,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     buyLaptop: () => dispatch(buyLaptop()),
     buyMobile: () => dispatch(buyMobile()),
-    fetchUsers: () => dispatch(fetchAllData_Users()),
+   // fetchUsers: () => dispatch(fetchAllData_Users()),
+    fetchUsers: () => dispatch(fetchUserResponse()), // for Sagaa
     cacheUserStore:(data)=>dispatch(cacheUser(data))
   }
 }
